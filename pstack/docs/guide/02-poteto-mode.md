@@ -12,11 +12,11 @@ flowchart TD
     B --> C[读取 Principles 小节]
     C --> D{匹配任务}
     D -->|只读问题| E[Investigation]
-    D -->|缺陷| F[Bug fix]
-    D -->|新行为| G[Feature]
-    D -->|仅结构| H[Refactoring]
-    D -->|可测量的缓慢| I[Perf issue]
-    D -->|大型工作或无匹配| J[figure-it-out]
+    D -->|缺陷问题| F[Bug fix]
+    D -->|新特性| G[Feature]
+    D -->|重构| H[Refactoring]
+    D -->|性能问题| I[Perf issue]
+    D -->|解决问题| J[figure-it-out]
     E --> K[验证并报告]
     F --> K
     G --> K
