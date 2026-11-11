@@ -40,7 +40,26 @@ user-invocable: true
 - 输入（契约、文档、上游产物）
 - 输出位置
 - 验证命令
+- 并行探针（仅并行派发时，见下）
 - 报告格式：PASS / ISSUES / BLOCKED，附证据
+
+### 并行探针
+
+并行派发时，给每个 worker 的任务书加上同一段探针，放在开工前和收工后：
+
+```bash
+echo "$(date -u +%FT%T.%3NZ) START <角色> pid=$$" >> /tmp/<project>-parallel.log
+# ……任务……
+echo "$(date -u +%FT%T.%3NZ) END <角色> pid=$$" >> /tmp/<project>-parallel.log
+```
+
+全部返回后读取日志，按时间区间判断：
+
+- 多个 `START` 集中在几秒内，且 `END` 区间重叠 → 真并行。
+- `START` 依次相隔约等于前一个 worker 的耗时 → 实际串行。
+- 同一时刻只有一行在运行 → 串行。
+
+把结论写进最终报告；如果实际是串行，如实说明，不按并行估算进度。
 
 ## 并行规则
 
