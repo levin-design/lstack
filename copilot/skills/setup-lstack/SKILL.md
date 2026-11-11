@@ -9,6 +9,19 @@ description: 配置 lstack 在本项目中为每个角色使用哪些模型，�
 
 Copilot 不向 agent 暴露模型 API。唯一可靠的来源是用户看到的模型选择器。绝不要写入用户未确认的模型标签。
 
+## 配置发现顺序（先读后问）
+
+按顺序查找已有配置，找到第一个就停止：
+
+1. `.github/skills/lstack/references/lstack-models.md`：本项目配置，Copilot 读取的位置。
+2. `~/.copilot/lstack-models.md`：用户级默认，跨项目复用。
+3. `~/.cursor/rules/pstack-models.mdc`：Cursor 的旧配置，只用于迁移。
+4. 都没有：视为全部 `inherit-parent`，无需配置。
+
+**短路规则。** 如果找到配置，且用户没有明确要求修改，只展示解析后的预算和角色表，问一句“沿用 / 修改某个角色 / 重新配置”，然后结束。不要重新询问预算，不要逐个角色确认。只有用户选择“重新配置”或点名要改某个角色时，才进入完整问答。
+
+**零配置原则。** 默认值就是全部 `inherit-parent`。只有需要跨模型评审（`arena cross-judge pool` 用真实标签）或按角色分配不同模型时，才值得写这个文件。
+
 ## 步骤
 
 ### 1. 确认可用模型
@@ -19,7 +32,7 @@ Copilot 不向 agent 暴露模型 API。唯一可靠的来源是用户看到的�
 
 ### 2. 加载当前状态
 
-默认映射见步骤 5。如果 `.github/skills/lstack/references/lstack-models.md` 已存在，读取它，并将其 `# budget` 行和各角色值视为当前选择。否则从默认值开始。删除角色不在步骤 5 中的任何行，因为它来自已退役的角色。
+默认映射见步骤 5。按“配置发现顺序”读取：把找到的 `# budget` 行和各角色值视为当前选择；只找到 Cursor 旧配置时，先按步骤 5 迁移到项目文件，不要继续读写 Cursor 路径。都没有时从默认值开始。删除角色不在步骤 5 中的任何行，因为它来自已退役的角色。
 
 ### 3. 预算、映射与确认
 
@@ -40,7 +53,7 @@ Copilot 不向 agent 暴露模型 API。唯一可靠的来源是用户看到的�
 
 ### 5. 写入文件
 
-写入 `.github/skills/lstack/references/lstack-models.md`，包含一行携带所选标签的 `# budget`，以及每个角色一行，使用与 poteto-mode 相同的角色名。覆盖整个文件，使重复运行保持幂等。形态如下：
+写入 `.github/skills/lstack/references/lstack-models.md`，包含一行携带所选标签的 `# budget`，以及每个角色一行，使用与 poteto-mode 相同的角色名。覆盖整个文件，使重复运行保持幂等。这是默认的唯一写入位置；不要写 `~/.cursor/rules/`，VS Code 不读它。只有用户明确要求跨项目复用时，才额外写一份 `~/.copilot/lstack-models.md`，项目文件仍然优先。若本次是从 Cursor 旧配置迁移，写完后告知用户旧文件可删除。形态如下：
 
 ```markdown
 # lstack model configuration. One line per role. Delete a line to fall back to the skill default.
@@ -67,7 +80,7 @@ interrogate reviewers: inherit-parent
 
 ### 6. 确认
 
-告诉用户文件已写入，并且适用于本项目中的新 subagent 调用。重新运行本技能会更新它。
+告诉用户文件已写入，并且适用于本项目中的新 subagent 调用。补一句：除非模型变化或需要 Arena 跨模型评审，不要再次运行本技能。
 
 ### 7. 提供验证技能（可选）
 

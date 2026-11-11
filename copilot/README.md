@@ -19,6 +19,9 @@ cp agents/*.agent.md <project>/.github/agents/
 - 每个内置技能也已独立注册，可以直接用 `/技能名` 调用。
 - 角色模型与推理预算写在 `<project>/.github/skills/lstack/references/lstack-models.md`，由 `/setup-lstack` 生成。
 - 需要按名派生子代理时，`poteto-agent` 与 `comment-sicko` 已在 `.github/agents/`。
+- `agents/` 还提供一组不绑定具体项目的数字员工，见 [agents/README.md](agents/README.md)。
+
+完整用法、并行机制、模型配置与常见问题见 [docs/实用指南.md](docs/实用指南.md)。
 
 ## 结构
 
@@ -30,7 +33,15 @@ skills/<name>/references/...                  技能自带的参考资料
 skills/<name>/playbooks/...                   剧本
 skills/<name>/scripts/...                     可执行脚本与测试
 agents/poteto-agent.agent.md                  委派执行子任务的子代理
-agents/comment-sicko.agent.md                 删注释评审子代理
+agents/comment-sicko.agent.md                删注释评审子代理
+agents/tech-lead.agent.md                     数字员工队长（总编排）
+agents/architect.agent.md                     数字员工：架构师
+agents/engineer.agent.md                      数字员工：工程师
+agents/reviewer.agent.md                      数字员工：审查员
+agents/verifier.agent.md                      数字员工：验证员
+agents/writer.agent.md                        数字员工：技术写作者
+agents/README.md                              数字员工名册
+docs/实用指南.md                              使用指南
 ```
 
 ## 与上游的关系
@@ -38,7 +49,7 @@ agents/comment-sicko.agent.md                 删注释评审子代理
 - 上游：Lauren Tan 的 pstack v0.15.36（MIT 许可证，见 `LICENSE`），https://github.com/cursor/plugins/tree/main/pstack
 - 本包把产品名改为 lstack，并把上游对 Cursor 的依赖替换为 Copilot 的等价物：`runSubagent`、`vscode_askQuestions`、自定义代理、`VSCODE_TARGET_SESSION_LOG` 会话日志、GitHub Copilot 评审线程识别。
 - 上游的 `skills/<name>/SKILL.md` 在本包中展开为 `skills/<name>/SKILL.md`，因此每个技能都能被 Copilot 发现并单独调用；技能之间的链接全部改指同级 `SKILL.md`。
-- 上游的 `docs/` 与 `automations/` 没有包含在内，它们属于 Cursor 发行形态。
+- 上游的 `docs/` 与 `automations/` 没有包含在内，它们属于 Cursor 发行形态；本包的 `docs/` 只有这份实用指南。
 
 ## 已知限制
 
