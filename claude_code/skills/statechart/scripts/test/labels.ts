@@ -158,7 +158,7 @@ const SPACE = [
 const OTHER = [
   "é",
   "ü",
-  "café",
+  "中文",
   "😀",
   "👩‍💻",
   "e\u0301",

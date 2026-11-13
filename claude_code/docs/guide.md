@@ -19,7 +19,7 @@ Project install:
 
 ```bash
 cp -R skills/. <project>/.claude/skills/
-cp agents/*.md <project>/.claude/agents/
+find agents -maxdepth 1 -name '*.md' ! -name README.md -exec cp {} <project>/.claude/agents/ \;
 ```
 
 User install:
@@ -27,7 +27,7 @@ User install:
 ```bash
 mkdir -p ~/.claude/skills ~/.claude/agents
 cp -R skills/. ~/.claude/skills/
-cp agents/*.md ~/.claude/agents/
+find agents -maxdepth 1 -name '*.md' ! -name README.md -exec cp {} ~/.claude/agents/ \;
 ```
 
 The model rule is optional. See `pstack-models.example.md`.
@@ -115,17 +115,19 @@ After all workers return, read the log. Overlapping intervals mean real parallel
 
 ## Agents
 
+Tool names match each file's `tools` frontmatter.
+
 | Agent | Tools | Role |
 | --- | --- | --- |
-| `tech-lead` | read, write, edit, bash, agent, todo | Orchestrates the team and owns acceptance |
-| `architect` | read-only | Interfaces, boundaries, contracts, trade-offs |
-| `engineer` | read, write, edit, bash | Implements against a frozen contract |
-| `ci-engineer` | read, write, edit, bash | Maintains CI/CD pipelines, caching, and release automation |
-| `reviewer` | read-only | BLOCKING and NON-BLOCKING findings |
-| `verifier` | read, bash | Runs build, tests, and acceptance steps |
-| `writer` | read, write, edit | README, design docs, PR descriptions |
-| `poteto-agent` | read, write, edit, bash | Delegate for poteto-mode work |
-| `comment-sicko` | read-only | Deletes comments that carry no constraint |
+| `tech-lead` | Read, Write, Edit, Bash, Grep, Glob, Agent, TodoWrite | Orchestrates the team and owns acceptance |
+| `architect` | Read, Grep, Glob, TodoWrite | Interfaces, boundaries, contracts, trade-offs |
+| `engineer` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | Implements against a frozen contract |
+| `ci-engineer` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | Maintains CI/CD pipelines, caching, and release automation |
+| `reviewer` | Read, Grep, Glob, TodoWrite | BLOCKING and NON-BLOCKING findings |
+| `verifier` | Read, Grep, Glob, Bash, TodoWrite | Runs build, tests, and acceptance steps |
+| `writer` | Read, Write, Edit, Grep, Glob, TodoWrite | README, design docs, PR descriptions |
+| `poteto-agent` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | Delegate for poteto-mode work |
+| `comment-sicko` | Read, Grep, Glob, TodoWrite | Deletes comments that carry no constraint |
 
 ## Common pitfalls
 
