@@ -8,7 +8,7 @@ A Claude Code adaptation of [pstack](https://github.com/cursor/plugins/tree/main
 |---|---|
 | Skills | Copied from `pstack/skills` (English). `setup-pstack` is rewritten to write `~/.claude/rules/pstack-models.md`, and `poteto-help` links are rewritten to this package's docs. |
 | Cursor names | Mapped at runtime by `docs/claude-code-adapter.md`: `Task` → `Agent`, `AskQuestion` → `AskUserQuestion`, `run_in_background` → omit, model slugs → `opus`/`sonnet`/`haiku`/`fable` plus effort. |
-| Agents | Nine Claude Code subagents in `agents/`: seven generic employees plus `poteto-agent` and `comment-sicko`. |
+| Agents | Eleven Claude Code subagents in `agents/`: nine generic employees plus `poteto-agent` and `comment-sicko`. |
 | Model config | `~/.claude/rules/pstack-models.md` instead of `~/.cursor/rules/pstack-models.mdc`. |
 | Cursor-only features | Automations, Bugbot, cloud agents, and built-in PR tooling are skipped with a one-line note. |
 
@@ -65,6 +65,8 @@ claude_code/
     README.md                   roster
     tech-lead.md
     architect.md
+    frontend-engineer.md
+    backend-engineer.md
     engineer.md
     ci-engineer.md
     reviewer.md
