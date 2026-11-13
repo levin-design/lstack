@@ -1,14 +1,14 @@
 # pstack for Claude Code
 
-A Claude Code adaptation of [pstack](https://github.com/cursor/plugins/tree/main/pstack). The skills are the upstream English skills, copied unchanged except for `setup-pstack`. The only adaptation layer is `docs/claude-code-adapter.md`, which maps Cursor names to Claude Code equivalents at runtime. This package adds a generic digital-employee team in `agents/`.
+A Claude Code adaptation of [pstack](https://github.com/cursor/plugins/tree/main/pstack). The skills are the upstream English skills, copied unchanged except for `setup-pstack` and the documentation links in `poteto-help`. The only adaptation layer is `docs/claude-code-adapter.md`, which maps Cursor names to Claude Code equivalents at runtime. This package adds a generic digital-employee team in `agents/`.
 
 ## What is different from pstack
 
 | Area | Change |
 |---|---|
-| Skills | Copied from `pstack/skills` (English). Only `setup-pstack` is rewritten to write `~/.claude/rules/pstack-models.md`. |
+| Skills | Copied from `pstack/skills` (English). `setup-pstack` is rewritten to write `~/.claude/rules/pstack-models.md`, and `poteto-help` links are rewritten to this package's docs. |
 | Cursor names | Mapped at runtime by `docs/claude-code-adapter.md`: `Task` → `Agent`, `AskQuestion` → `AskUserQuestion`, `run_in_background` → omit, model slugs → `opus`/`sonnet`/`haiku`/`fable` plus effort. |
-| Agents | Eight Claude Code subagents in `agents/`: six generic employees plus `poteto-agent` and `comment-sicko`. |
+| Agents | Nine Claude Code subagents in `agents/`: seven generic employees plus `poteto-agent` and `comment-sicko`. |
 | Model config | `~/.claude/rules/pstack-models.md` instead of `~/.cursor/rules/pstack-models.mdc`. |
 | Cursor-only features | Automations, Bugbot, cloud agents, and built-in PR tooling are skipped with a one-line note. |
 
@@ -18,7 +18,7 @@ Project install:
 
 ```bash
 cp -R skills/. <project>/.claude/skills/
-cp agents/*.md <project>/.claude/agents/
+find agents -maxdepth 1 -name '*.md' ! -name README.md -exec cp {} <project>/.claude/agents/ \;
 ```
 
 User install:
@@ -26,7 +26,7 @@ User install:
 ```bash
 mkdir -p ~/.claude/skills ~/.claude/agents
 cp -R skills/. ~/.claude/skills/
-cp agents/*.md ~/.claude/agents/
+find agents -maxdepth 1 -name '*.md' ! -name README.md -exec cp {} ~/.claude/agents/ \;
 ```
 
 Model rule (optional):
@@ -66,6 +66,7 @@ claude_code/
     tech-lead.md
     architect.md
     engineer.md
+    ci-engineer.md
     reviewer.md
     verifier.md
     writer.md

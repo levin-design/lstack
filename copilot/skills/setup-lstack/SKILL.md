@@ -38,10 +38,10 @@ Copilot 不向 agent 暴露模型 API。唯一可靠的来源是用户看到的�
 
 **(a) 询问预算。** 使用 `vscode_askQuestions` 提供以下四个选项；如果文件中记录了当前预算，就说出它。没有文件时，说明 `large` 与默认值一致。
 
-- `unlimited — 最高推理`
-- `large — 高推理`
-- `medium — 中等推理`
-- `small — 快速或轻量推理`
+- `unlimited — 最高推理（max）`
+- `large — 极高推理（xhigh）`
+- `medium — 高推理（high）`
+- `small — 中等推理（medium）`
 
 **(b) 应用它。** 预算是建议性的。Copilot 通过所选模型及其设置来决定推理强度，因此记录预算，并在推荐选择哪个模型变体时使用它。它绝不改写已确认的标签。处于 `inherit-parent` 的角色不变。面板角色保持其列表长度，因为每个条目运行一个 subagent。
 
@@ -58,7 +58,7 @@ Copilot 不向 agent 暴露模型 API。唯一可靠的来源是用户看到的�
 ```markdown
 # lstack model configuration. One line per role. Delete a line to fall back to the skill default.
 # `inherit-parent` as a value: omit `model` in runSubagent, so the role runs on the parent chat model. List entries still count toward panel fan-out.
-# budget: large (high)
+# budget: large (xhigh)
 feature, refactoring: inherit-parent
 bug-fix: inherit-parent
 perf-issue: inherit-parent

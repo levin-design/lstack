@@ -17,7 +17,7 @@ cp agents/*.agent.md <project>/.github/agents/
 
 - `/lstack <任务>` 进入 poteto 模式，这是完整工作流的入口。
 - 每个内置技能也已独立注册，可以直接用 `/技能名` 调用。
-- 角色模型与推理预算写在 `<project>/.github/skills/lstack/references/lstack-models.md`，由 `/setup-lstack` 生成。
+- 角色模型与推理预算写在 `<project>/.github/skills/lstack/references/lstack-models.md`；包内提供全 `inherit-parent` 的默认配置，可运行 `/setup-lstack` 覆盖。
 - 需要按名派生子代理时，`poteto-agent` 与 `comment-sicko` 已在 `.github/agents/`。
 - `agents/` 还提供一组不绑定具体项目的数字员工，见 [agents/README.md](agents/README.md)。
 
@@ -37,6 +37,7 @@ agents/comment-sicko.agent.md                删注释评审子代理
 agents/tech-lead.agent.md                     数字员工队长（总编排）
 agents/architect.agent.md                     数字员工：架构师
 agents/engineer.agent.md                      数字员工：工程师
+agents/ci-engineer.agent.md                   数字员工：CI/CD 工程师
 agents/reviewer.agent.md                      数字员工：审查员
 agents/verifier.agent.md                      数字员工：验证员
 agents/writer.agent.md                        数字员工：技术写作者
