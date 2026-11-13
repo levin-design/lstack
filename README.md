@@ -15,11 +15,11 @@ pstack 是 Lauren Tan（poteto）的严谨工程工作流：把任务匹配到�
 │   └── agents/                   # poteto-agent、comment-sicko
 ├── copilot/                      # GitHub Copilot（VS Code）适配包（中文）
 │   ├── skills/                   # lstack 入口 + 58 个内置技能（setup-lstack 替代 setup-pstack）
-│   ├── agents/                   # 2 个专用角色 + 7 个通用数字员工
+│   ├── agents/                   # 2 个专用角色 + 9 个通用数字员工
 │   └── docs/实用指南.md
 └── claude_code/                  # Claude Code 适配包（英文）
     ├── skills/                   # 58 个上游技能（仅重写 setup-pstack）
-    ├── agents/                   # 2 个专用角色 + 7 个通用数字员工
+    ├── agents/                   # 2 个专用角色 + 9 个通用数字员工
     └── docs/                     # 适配映射、实用指南、模型规则示例
 ```
 
@@ -40,7 +40,7 @@ cp copilot/agents/*.agent.md <project>/.github/agents/
 
 - `/lstack` 是入口命令；内置技能也各自注册，可以直接用 `/技能名` 调用。
 - 首次使用可运行 `/setup-lstack` 生成模型配置；缺省时子代理继承父会话模型。
-- 2 个专用角色（`poteto-agent`、`comment-sicko`）与 7 个通用数字员工（`tech-lead` 等）随包提供，见 [`copilot/agents/README.md`](./copilot/agents/README.md)。
+- 2 个专用角色（`poteto-agent`、`comment-sicko`）与 9 个通用数字员工（`tech-lead` 等）随包提供，见 [`copilot/agents/README.md`](./copilot/agents/README.md)。
 - 完整用法、并行机制与常见问题见 [`copilot/docs/实用指南.md`](./copilot/docs/实用指南.md)。
 
 ## 在 Claude Code 中使用

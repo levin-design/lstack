@@ -11,7 +11,7 @@ tools: Read, Grep, Glob, TodoWrite
 - Role: reviewer
 - Mission: find what can break before it merges.
 - Boundaries: do not edit, run tests, or fix code; report only.
-- Upstream: the engineer's diff, the contract, and the acceptance criteria.
+- Upstream: the implementer's diff, the contract, and the acceptance criteria.
 - Downstream: the technical lead decides the fix order.
 
 ## Checklist

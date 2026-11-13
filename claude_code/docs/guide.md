@@ -121,8 +121,10 @@ Tool names match each file's `tools` frontmatter.
 | --- | --- | --- |
 | `tech-lead` | Read, Write, Edit, Bash, Grep, Glob, Agent, TodoWrite | Orchestrates the team and owns acceptance |
 | `architect` | Read, Grep, Glob, TodoWrite | Interfaces, boundaries, contracts, trade-offs |
-| `engineer` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | Implements against a frozen contract |
-| `ci-engineer` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | Maintains CI/CD pipelines, caching, and release automation |
+| `frontend-engineer` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | UI, components, client state, accessibility, browser behavior |
+| `backend-engineer` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | APIs, services, data, persistence, server-side security |
+| `engineer` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | Generalist for cross-layer or small changes; fallback |
+| `ci-engineer` | Read, Write, Edit, Bash, Grep, Glob, TodoWrite | Engineering & operations: CI/CD pipelines, caching, release automation |
 | `reviewer` | Read, Grep, Glob, TodoWrite | BLOCKING and NON-BLOCKING findings |
 | `verifier` | Read, Grep, Glob, Bash, TodoWrite | Runs build, tests, and acceptance steps |
 | `writer` | Read, Write, Edit, Grep, Glob, TodoWrite | README, design docs, PR descriptions |
