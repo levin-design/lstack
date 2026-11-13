@@ -120,6 +120,7 @@ After all workers return, read the log. Overlapping intervals mean real parallel
 | `tech-lead` | read, write, edit, bash, agent, todo | Orchestrates the team and owns acceptance |
 | `architect` | read-only | Interfaces, boundaries, contracts, trade-offs |
 | `engineer` | read, write, edit, bash | Implements against a frozen contract |
+| `ci-engineer` | read, write, edit, bash | Maintains CI/CD pipelines, caching, and release automation |
 | `reviewer` | read-only | BLOCKING and NON-BLOCKING findings |
 | `verifier` | read, bash | Runs build, tests, and acceptance steps |
 | `writer` | read, write, edit | README, design docs, PR descriptions |

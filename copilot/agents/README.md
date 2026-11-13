@@ -7,6 +7,7 @@
 | `tech-lead.agent.md` | 技术负责人（队长） | 全部 + `agent` | 跨角色任务的总编排 |
 | `architect.agent.md` | 架构师 | 只读 | 接口、模块边界、契约与权衡 |
 | `engineer.agent.md` | 工程师 | 读写 + 执行 | 按契约实现并自测 |
+| `ci-engineer.agent.md` | CI/CD 工程师 | 读写 + 执行 | 维护流水线、缓存、产物与发布自动化 |
 | `reviewer.agent.md` | 审查员 | 只读 | 合并前找会出错的地方 |
 | `verifier.agent.md` | 验证员 | 只读 + 执行 | 独立运行构建/测试/验收 |
 | `writer.agent.md` | 技术写作者 | 读写文档 | README、设计文档、PR 描述 |

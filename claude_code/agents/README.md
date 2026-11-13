@@ -7,6 +7,7 @@ Claude Code subagents. All are project-agnostic; project details come from the b
 | `tech-lead.md` | Technical lead | read, write, edit, bash, agent, todo | Cross-role work that needs planning, dispatch, and acceptance |
 | `architect.md` | Architect | read-only | Interfaces, module boundaries, contracts, trade-offs |
 | `engineer.md` | Engineer | read, write, edit, bash | Implement against a frozen contract |
+| `ci-engineer.md` | CI/CD engineer | read, write, edit, bash | Maintain pipelines, workflow config, caching, and release automation |
 | `reviewer.md` | Reviewer | read-only | Find blocking problems before merge |
 | `verifier.md` | Verifier | read, bash | Independently run builds, tests, and acceptance steps |
 | `writer.md` | Technical writer | read, write, edit | README, design docs, PR descriptions |

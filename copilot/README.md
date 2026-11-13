@@ -37,6 +37,7 @@ agents/comment-sicko.agent.md                删注释评审子代理
 agents/tech-lead.agent.md                     数字员工队长（总编排）
 agents/architect.agent.md                     数字员工：架构师
 agents/engineer.agent.md                      数字员工：工程师
+agents/ci-engineer.agent.md                   数字员工：CI/CD 工程师
 agents/reviewer.agent.md                      数字员工：审查员
 agents/verifier.agent.md                      数字员工：验证员
 agents/writer.agent.md                        数字员工：技术写作者
